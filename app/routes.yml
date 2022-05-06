@@ -1,1 +1,4 @@
 "/"     : "main#index"
+"/posts": "posts#index"
+"/posts/create": "posts#create"
+"/posts/rate": "posts#rate"
