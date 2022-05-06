@@ -74,4 +74,8 @@ class Controller
       end
     end
   end
+
+  private def is_numeric?(obj)
+    obj.to_s.match(/\A[+-]?\d+?(\.\d+)?\Z/) == nil ? false : true
+  end
 end

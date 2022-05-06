@@ -4,7 +4,7 @@ class PostsController < Controller
       self.validation_error("Invalid limit")
       return get_attributes
     end
-    posts = Post.limit(params['limit']).order('rate desc')
+    posts = Post.limit(params['limit']).order(Sequel.desc(:rate_value))
     set_content(posts.to_hash.to_s)
     get_attributes
   end
@@ -22,7 +22,8 @@ class PostsController < Controller
   end
 
   def rate
-    unless params['post_id'] && params['value'] && Post.where(id: params['post_id']).exists
+    unless params['post_id'] && params['value'] && Post.where(id: params['post_id']).exists &&
+      (is_numeric? params['value']) && params['value'].to_i >= 1 && params['value'].to_i <= 5
       self.validation_error("missing parameters")
       return get_attributes
     end
@@ -33,4 +34,6 @@ class PostsController < Controller
     post.save
     get_attributes
   end
+
+
 end
