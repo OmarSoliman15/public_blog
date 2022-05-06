@@ -29,9 +29,7 @@ class PostsController < Controller
     end
 
     post = Post.where(id: params['post_id']).first
-    post.rate_count += 1
-    post.rate_value = (post.rate_value + params['value'].to_i) / post.rate_count
-    post.save
+    post.calculate_rate(params['value'].to_i)
     get_attributes
   end
 

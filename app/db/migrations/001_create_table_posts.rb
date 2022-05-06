@@ -5,6 +5,7 @@ class CreateTablePosts < Sequel::Migration
       column :author_ip, :string
       column :title, :string
       column :content, :text
+      column :rate_sum, :float, default: 0
       column :rate_value, :float, default: 0
       column :rate_count, :integer, default: 0
       index :author_ip
