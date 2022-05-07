@@ -20,8 +20,7 @@ class PostsController < Controller
     Post.create(author_ip: params['author_ip'],
                 title: params['title'],
                 content: params['content'],
-                user: user,
-    )
+                user: user)
     get_attributes
   end
 
