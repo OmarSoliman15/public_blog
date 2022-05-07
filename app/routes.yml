@@ -3,3 +3,4 @@
 "/posts/create": "posts#create"
 "/posts/rate": "posts#rate"
 "/posts/ip_authors": "posts#ip_authors"
+"/feedbacks/create": "feedbacks#create"
