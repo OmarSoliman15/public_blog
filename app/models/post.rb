@@ -1,4 +1,5 @@
 class Post < Sequel::Model(DB)
+  many_to_one :user
 
   def calculate_rate(value)
     self.rate_sum += value

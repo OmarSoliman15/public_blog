@@ -5,19 +5,23 @@ class PostsController < Controller
       return get_attributes
     end
     posts = Post.limit(params['limit']).order(Sequel.desc(:rate_value))
-    set_content(posts.to_hash.to_s)
+    set_content(posts.select(:id, :title, :content).to_hash.to_s)
     get_attributes
   end
 
   def create
-    unless params['title'] && params['content'] && params['author_ip'] && params['user_name']
+    unless params['title'] && params['content'] && params['author_ip'] && params['username']
       self.validation_error("missing parameters")
       return get_attributes
     end
+
+    user = User.find_or_create(username: params['username'])
+
     Post.create(author_ip: params['author_ip'],
                 title: params['title'],
                 content: params['content'],
-                )
+                user: user,
+    )
     get_attributes
   end
 
@@ -33,5 +37,11 @@ class PostsController < Controller
     get_attributes
   end
 
+  def ip_authors
+    ips = Post.join(:users).group_and_count(:author_ip, :username).having{Sequel.function(:count, :author_ip) > 1}.all
 
+    set_content(ips.to_s)
+
+    get_attributes
+  end
 end

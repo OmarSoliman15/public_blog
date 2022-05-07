@@ -3,6 +3,7 @@ class CreateTablePosts < Sequel::Migration
     create_table :posts do
       primary_key :id
       column :author_ip, :string
+      column :user_id, :integer
       column :title, :string
       column :content, :text
       column :rate_sum, :float, default: 0
