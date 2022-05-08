@@ -1,6 +1,5 @@
 class GenerateFeedbacksWorker
   include Sidekiq::Worker
-  include Sidetiq::Schedulable
 
   def perform
     user_feedbacks =  User.join(:feedbacks).limit(2).select(:username, :comment, :model_type)
