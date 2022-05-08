@@ -18,7 +18,7 @@ class FeedbacksController < Controller
       return get_attributes
     end
 
-    feedback = Feedback.create(model_id: params['model_id'],
+    Feedback.create(model_id: params['model_id'],
                     model_type: params['model_type'],
                     comment: params['comment'],
                     owner_id: params['owner_id'])

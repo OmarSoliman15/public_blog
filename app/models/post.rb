@@ -1,6 +1,6 @@
 class Post < Sequel::Model(DB)
   many_to_one :user
-  one_to_many :feedback, :as => :model
+  one_to_many :feedbacks, :as => :model
 
   def calculate_rate(value)
     self.rate_sum += value

@@ -1,20 +1,52 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    builder (3.2.4)
+    concurrent-ruby (1.1.10)
+    connection_pool (2.2.5)
+    et-orbi (1.2.7)
+      tzinfo
+    faker (2.20.0)
+      i18n (>= 1.8.11, < 2)
+    fugit (1.5.3)
+      et-orbi (~> 1, >= 1.2.7)
+      raabro (~> 1.4)
+    i18n (1.10.0)
+      concurrent-ruby (~> 1.0)
     nio4r (2.5.8)
     puma (5.6.4)
       nio4r (~> 2.0)
+    raabro (1.4.0)
     rack (2.2.3)
+    redis (4.6.0)
+    rufus-scheduler (3.8.1)
+      fugit (~> 1.1, >= 1.1.6)
     sequel (5.56.0)
+    sidekiq (6.4.2)
+      connection_pool (>= 2.2.2)
+      rack (~> 2.0)
+      redis (>= 4.2.0)
+    sidekiq-scheduler (4.0.0)
+      redis (>= 4.2.0)
+      rufus-scheduler (~> 3.2)
+      sidekiq (>= 4)
+      tilt (>= 1.4.0)
     sqlite3 (1.4.2)
+    tilt (2.0.10)
+    tzinfo (2.0.4)
+      concurrent-ruby (~> 1.0)
 
 PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  builder
+  faker
   puma
   rack
   sequel
+  sidekiq
+  sidekiq-scheduler
   sqlite3
 
 RUBY VERSION
