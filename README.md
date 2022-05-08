@@ -31,6 +31,6 @@ rackup
 
 ### Use The API
 
-You can use the `public_blog` service api simply from the following postman link:
+You can use the `public_blog` service api simply from `postman_collection.json` on the repository or from the following postman link:
 ```
 https://www.getpostman.com/collections/35d91b8441e282fcc726```

@@ -1,0 +1,181 @@
+{
+	"info": {
+		"_postman_id": "79bc89a4-3988-48c7-a7a8-263c1d22b65f",
+		"name": "Public blog",
+		"description": "public blog api collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create a post",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://0.0.0.0:9292/posts/create?title=Omar's title&content=Omar Soliman's content&author_ip=100.92.61.0.1&username=omarsoliman",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "9292",
+					"path": [
+						"posts",
+						"create"
+					],
+					"query": [
+						{
+							"key": "title",
+							"value": "Omar's title"
+						},
+						{
+							"key": "content",
+							"value": "Omar Soliman's content"
+						},
+						{
+							"key": "author_ip",
+							"value": "100.92.61.0.1"
+						},
+						{
+							"key": "username",
+							"value": "omarsoliman"
+						}
+					]
+				},
+				"description": "Create a post. It should:\n- Accept the title and content of the post (cannot be empty), as well as the author's login and IP.\n- If there is no author with this username yet, it should be created.\n- Return either post attributes with status 200 or errors validations with status 422."
+			},
+			"response": []
+		},
+		{
+			"name": "Rate the post",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://0.0.0.0:9292/posts/rate?post_id=1&value=5",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "9292",
+					"path": [
+						"posts",
+						"rate"
+					],
+					"query": [
+						{
+							"key": "post_id",
+							"value": "1"
+						},
+						{
+							"key": "value",
+							"value": "5"
+						}
+					]
+				},
+				"description": "Rate the post. It should:\n- Accept post ID and value.\n- Return a new one average post rating.\n- Important: the action must work correctly for any number of competitive requests to rate the same post."
+			},
+			"response": []
+		},
+		{
+			"name": "Get the top N posts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://0.0.0.0:9292/posts?limit=25",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "9292",
+					"path": [
+						"posts"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "25"
+						}
+					]
+				},
+				"description": "Get the top N posts by average rating. Just an array of objects with headings and content"
+			},
+			"response": []
+		},
+		{
+			"name": "author_ips usernames",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://0.0.0.0:9292/posts/ip_authors",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "9292",
+					"path": [
+						"posts",
+						"ip_authors"
+					]
+				},
+				"description": "Get a list of IPs from which several different authors posted. Array objects with fields: IP and an array of author logins."
+			},
+			"response": []
+		},
+		{
+			"name": "Add feedback",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://0.0.0.0:9292/feedbacks/create?model_id=1&model_type=user&comment=This's a big problem&owner_id=3",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "9292",
+					"path": [
+						"feedbacks",
+						"create"
+					],
+					"query": [
+						{
+							"key": "model_id",
+							"value": "1"
+						},
+						{
+							"key": "model_type",
+							"value": "user"
+						},
+						{
+							"key": "comment",
+							"value": "This's a big problem"
+						},
+						{
+							"key": "owner_id",
+							"value": "3"
+						}
+					]
+				},
+				"description": "Add feedback. It should:\n- Accept user_id or post_id, comment, owner_id\n- Check if post or user already have a feedback from same owner\n- Return feedback list form same owner"
+			},
+			"response": []
+		}
+	]
+}
